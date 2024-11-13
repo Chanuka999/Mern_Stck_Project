@@ -5,6 +5,7 @@ const router = require("./Routes/UserRoutes");
 
 const app = express();
 
+app.use(express.json());
 app.use("/users",router);
 
 mongoose.connect("mongodb+srv://admin:eKwASCHzdQ92KgOP@cluster0.md3oc.mongodb.net/")
