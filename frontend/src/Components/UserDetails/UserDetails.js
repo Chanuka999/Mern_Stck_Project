@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav from '../Nav/Nav';
 import axios from "axios";
 
@@ -9,6 +9,12 @@ const fetchHandler = async() =>{
 }
 
 function UserDetails() {
+
+  const [users, setUsers] = useState();
+  useEffect(()=> {
+    fetchHandler().then((data) => setUsers(data.users));
+  },[])
+  
   return (
     <div>
         <Nav/>
