@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Nav from '../Nav/Nav';
 import axios from "axios";
+import User from "../User/User"; 
 
 const URL = "http://localhost:5000/users";
 
@@ -14,11 +15,19 @@ function UserDetails() {
   useEffect(()=> {
     fetchHandler().then((data) => setUsers(data.users));
   },[])
-  
+
   return (
     <div>
         <Nav/>
       <h1>User Details display page</h1>
+      <div>
+        {users && users.map((user,i) =>(
+          <div key={i}>
+               <User user={user}/>
+            </div>
+        )
+        )}
+      </div>
     </div>
   )
 }
