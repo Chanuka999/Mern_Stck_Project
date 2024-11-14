@@ -4,8 +4,11 @@ const mongoose = require("mongoose");
 const router = require("./Routes/UserRoutes");
 
 const app = express();
+const cors = require("cors");
+
 
 app.use(express.json());
+app.use(cors());
 app.use("/users",router);
 
 mongoose.connect("mongodb+srv://admin:eKwASCHzdQ92KgOP@cluster0.md3oc.mongodb.net/")
