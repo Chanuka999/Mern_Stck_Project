@@ -16,6 +16,16 @@ function UserDetails() {
     fetchHandler().then((data) => setUsers(data.users));
   },[])
 
+  const hadleSendReport = () =>{
+    const phoneNumber = "+94772849767";
+    const message = `selected user Reports`
+    const WhatsAppUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+      message
+    )}`; 
+  
+    window.open(WhatsAppUrl,"_blank");
+  }
+
   return (
     <div>
         <Nav/>
@@ -28,8 +38,10 @@ function UserDetails() {
         )
         )}
       </div>
+      <button onClick={hadleSendReport}>Send Whatsapp message</button>
     </div>
-  )
+     
+  );
 }
 
 export default UserDetails
