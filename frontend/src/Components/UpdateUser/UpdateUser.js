@@ -8,9 +8,9 @@ function UpdateUser() {
  
     const [inputs,setInputs] = useState({});
     const history = useNavigate();
-    const id = useParams.id;
+    const id = useParams().id;
 
-    useEffect(() =>{
+    useEffect(()  =>{
         const fetchHandler = async () =>{
             await axios
             .get(`http://localhost:5000/users/${id}`)
