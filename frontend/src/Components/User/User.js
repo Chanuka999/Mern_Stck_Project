@@ -15,7 +15,7 @@ function User(props) {
      await axios.delete(`http://localhost:5000/users/${_id}`)
      .then(res=>res.data)
      .then(() =>history("/"))
-     .then(() =>history("/usersdetails"));
+     .then(() =>history("/userdetails"));
   }
   return (
     <div> 
