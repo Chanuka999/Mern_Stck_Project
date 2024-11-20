@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Nav from '../Nav/Nav';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import  './AddUser.css';
 
 function AddUser() {
     const history = useNavigate();
@@ -41,21 +42,21 @@ const sendRequest = async()=>{
     <div>
         <Nav/>
       <h1>Add user page</h1>
-        <form onSubmit={handleSubmit}>
+        <form class="Container" onSubmit={handleSubmit}>
             <label>name:</label>
-            <br/>
+            
             <input type="text" name="name" onChange={handleChange} value={inputs.name} required/>
             <br></br>
             <label for="gmail">gmail:</label>
-            <br/>
+         
             <input type="text"  name="gmail" onChange={handleChange} value={inputs.gmail} required/>
             <br></br>
-            <label for="age">age:</label>
-            <br/>
+            <label for="age">age :</label>
+         
             <input type="text"  name="age" onChange={handleChange} value={inputs.age} required/>
             <br></br>
             <label for="address">Address:</label>
-            <br/>
+      
             <input type="text"  name="address" onChange={handleChange} value={inputs.address} required/>
             <br/><br/>
           <button>Submit</button>
