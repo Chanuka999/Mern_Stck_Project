@@ -24,3 +24,13 @@
     background-color: #04AA6D;
     color: white;
   }
+
+  .hello{
+    color: black;
+    background-color: #04AA6D;
+  }
+
+  .display{
+    padding: 20px;
+    margin:0 20px;
+  }
