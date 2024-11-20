@@ -1,57 +1,83 @@
-import React, { useEffect, useState,useRef } from 'react';
-import Nav from '../Nav/Nav';
+import React, { useEffect, useState, useRef } from "react";
+import Nav from "../Nav/Nav";
 import axios from "axios";
-import User from "../User/User"; 
-import {useReactToPrint}  from "react-to-print";
+import User from "../User/User";
+import { useReactToPrint } from "react-to-print";
 
 const URL = "http://localhost:5000/users";
 
-const fetchHandler = async() =>{
+const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);
-}
+};
 
 function UserDetails() {
+  // Initialize users as an empty array
+  const [users, setUsers] = useState([]);
 
-  const [users, setUsers] = useState();
-  useEffect(()=> {
-    fetchHandler().then((data) => setUsers(data.users));
-  },[])
+  // Fetch users on component mount
+  useEffect(() => {
+    fetchHandler().then((data) => setUsers(data.users || []));
+  }, []);
 
- const ComponentsRef = useRef();
- const handlePrint = useReactToPrint({
-   content: () => ComponentsRef.current,
-   DocumentTitle:"Users Report",
-   onafterprint:() => alert("Users Report Successfully Download !"),
- })
+  // Reference for printing
+  const componentsRef = useRef();
 
+  // Handle print functionality
+  const handlePrint = useReactToPrint({
+    content: () => componentsRef.current,
+    documentTitle: "Users Report",
+    onAfterPrint: () => alert("Users Report Successfully Downloaded!"),
+  });
 
-  const hadleSendReport = () =>{
+  // Handle sending report via WhatsApp
+  const handleSendReport = () => {
     const phoneNumber = "+94772849767";
-    const message = `selected user Reports`
+    const message = `Selected user reports:\n${users
+      .map((user) => `ID: ${user._id}, Name: ${user.name}, Email: ${user.gmail}`)
+      .join("\n")}`;
     const WhatsAppUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
       message
-    )}`; 
-  
-    window.open(WhatsAppUrl,"_blank");
-  }
+    )}`;
+    window.open(WhatsAppUrl, "_blank");
+  };
 
   return (
     <div>
-        <Nav/>
-      <h1>User Details display page</h1>
-      <div ref={ComponentsRef} >
-        {users && users.map((user,i) =>(
-          <div key={i}>
-               <User user={user}/>
-            </div>
-        )
+      <Nav />
+      <h1 className="hello">User Details Display Page</h1>
+      <div ref={componentsRef}>
+        {users.length > 0 ? (
+          <table
+            border="1"
+            cellPadding="10"
+            style={{ width: "100%", textAlign: "left" }}
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <User key={user._id} user={user} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No users found.</p>
         )}
       </div>
-      <button onClick={handlePrint}>Download Report</button>
-      <button onClick={hadleSendReport}>Send Whatsapp message</button>
+      <div style={{ marginTop: "20px" }}>
+        <button onClick={handlePrint}>Download Report</button>
+        <button onClick={handleSendReport}>Send WhatsApp Message</button>
+      </div>
     </div>
-     
   );
 }
 
-export default UserDetails
+export default UserDetails;
