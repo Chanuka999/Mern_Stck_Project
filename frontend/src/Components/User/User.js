@@ -18,17 +18,19 @@ function User(props) {
      .then(() =>history("/userdetails"));
   }
   return (
-    <div> 
-      <h1>User Display</h1>
-      <br></br>
-      <h1>ID :{_id}</h1>
-      <h1>Name :{name}</h1>
-      <h1>gmail :{gmail}</h1>
-      <h1>Age :{age}</h1>
-      <h1>Address :{address}</h1>
-     <Link to={`/UserDetails/${_id}`}>update</Link>
-      <button onClick={deleteHandler}>Delete</button>
-    </div>
+    <tr>
+      <td>{_id}</td>
+      <td>{name}</td>
+      <td>{gmail}</td>
+      <td>{age}</td>
+      <td>{address}</td>
+      <td>
+        <Link to={`/UserDetails/${_id}`} style={{ marginRight: "10px" }}>
+          Update
+        </Link>
+        <button onClick={deleteHandler}>Delete</button>
+      </td>
+    </tr>
   )
 }
 
