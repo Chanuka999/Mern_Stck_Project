@@ -26,7 +26,7 @@ function User(props) {
       <td>{address}</td>
       <td>
         <Link to={`/UserDetails/${_id}`} style={{ marginRight: "10px" }}>
-          Update
+          <button>Update</button>
         </Link>
         <button onClick={deleteHandler}>Delete</button>
       </td>
