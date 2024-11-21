@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: white;
+    background-color: gray;
    
     width: 100%;
     min-height: 100vh;
@@ -45,12 +45,21 @@ button{
     padding: 10px 30px;
     cursor: pointer;
     border: none;
-    background-color: #000;
+    background-color: blue;
     color: white;
     transition: all 0.3s ease-in;
 }
 
 button:hover{
- background-color: aqua;
- color:aqua;
+ background-color: rgb(97, 197, 39);
+ color:black;
+}
+
+.d1{
+    background-color: rgb(22, 175, 22);
+    color: black;
+}
+.d1:hover{
+    background-color: black;
+    color: #fff;
 }
