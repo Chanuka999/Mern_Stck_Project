@@ -1,0 +1,13 @@
+.home {
+    background-image: url(F:\Mern_stack_project\Mern_Stck_Project\img\mern.webp); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
