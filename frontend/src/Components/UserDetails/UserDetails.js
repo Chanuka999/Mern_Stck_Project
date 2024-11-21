@@ -29,6 +29,19 @@ function UserDetails() {
     onAfterPrint: () => alert("Users Report Successfully Downloaded!"),
   });
 
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [noResult, setNoResults] = useState(false);
+
+  // const handleSerch = () =>{
+  //   fetchHandler().then((data) =>{
+  //     const filterdUsers = data.users.filter((user) => Object.values(user).some((field) =>
+  //      field.toString().toLowerCase().includes(searchQuery.toLowerCase())
+  //     ))
+  //     setUsers(filterdUsers);
+  //     setNoResults(filterdUsers.length === 0);
+  //   });
+  // }
+
   // Handle sending report via WhatsApp
   const handleSendReport = () => {
     const phoneNumber = "+94772849767";
@@ -45,6 +58,8 @@ function UserDetails() {
     <div>
       <Nav />
       <h1 className="hello">User Details Display Page</h1>
+     
+    
       <div ref={componentsRef}>
         {users.length > 0 ? (
           <table
@@ -73,10 +88,11 @@ function UserDetails() {
         )}
       </div>
       <div style={{ marginTop: "20px" }}>
-        <button onClick={handlePrint}>Download Report</button>
-        <button onClick={handleSendReport}>Send WhatsApp Message</button>
+        <button className="d1" onClick={handlePrint}>Download Report</button>
+        <button className="d1" onClick={handleSendReport}>Send WhatsApp Message</button>
       </div>
     </div>
+    
   );
 }
 
